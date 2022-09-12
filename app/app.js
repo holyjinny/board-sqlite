@@ -13,6 +13,8 @@ app.set("views", "./src/views");
 // 많이 사용하는 엔진 = ejs
 app.set("view engine", "ejs");
 
+app.use(express.static(`${__dirname}/src/public`));
+
 /**
  * app과 router를 연결
  * use -> 미들웨어를 등록해주는 메서드.
