@@ -25,8 +25,8 @@ const printLogFormat = {
 
 const opts = {
     file: new transports.File({
-        filename: "winston.log",
-        dirname: "./log",
+        filename: "access.log",
+        dirname: "./logs",
         level: "info",
         format: printLogFormat.file,
     }),
@@ -43,5 +43,10 @@ const logger = createLogger({
 if (process.env.NODE_ENV !== "production") {
     logger.add(opts.console);
 };
+
+// morgan이랑 같이 써볼 때
+// logger.stream = {
+//     write: (message) => logger.info(message),
+// };
 
 module.exports = logger;
