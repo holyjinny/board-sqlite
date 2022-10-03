@@ -1,0 +1,27 @@
+<% if (user) { %>
+    <section class="todoapp">
+        <nav class="nav">
+            <ul>
+                <li class="user"><%= user.username %></li>
+                <li>
+                    <form action="/logout" method="post">
+                        <button class="logout" type="submit">로그아웃</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </section> 
+<%} else {%>
+    <section class="todoapp">
+        <nav class="nav">
+            <ul>
+                <li class="user">로그인 필요</li>
+                <li>
+                    <form action="/login" method="post">
+                        <button class="login" type="submit">로그인</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </section> 
+<%}%>
