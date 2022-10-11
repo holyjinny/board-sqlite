@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinny's Board</title>
+    <link rel="stylesheet" href="/css/board/board.css">
+    <script src="/js/board/board.js" defer></script>
+    <%- include('../home/header.ejs') %>
+</head>
+<body>
+    <div class="table">
+        <div class="table_section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>포토</th>
+                        <th>제목</th>
+                        <th>이름</th>
+                        <th>날짜</th>
+                        <th>조회</th>
+                        <th>댓글</th>
+                        <th>추천</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% if (board) { %>
+                        <% for (var i = 0; i < board.length; i++) { %>
+                            <tr>
+                                <td><%= board[i].id %></td>
+                                <td>사진 넣기</td>
+                                <td>
+                                    <a href="/board/<%= board[i].id %>">
+                                        <%= board[i].title %>
+                                    </a>
+                                </td>
+                                <td><%= board[i].owner_id %></td>
+                                <td><%= board[i].date %></td>
+                                <td><%= board[i].hits %></td>
+                                <td><%= board[i].comments %></td>
+                                <td><%= board[i].recommendation %></td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>                        
+            </table>
+
+            <!-- 게시물 수에 따른 페이지 넘버 -->
+            <ul class="pagination-container">
+                <% for (var i = 1; i <= pagination; i++) { %>
+                    <li>
+                        <a href="/board?page=<%= i %>&limit=<%=limit%>"><%= i %></a>
+                    </li>
+                <% } %>
+            </ul>
+            
+            <button class="add">글쓰기</button>
+            
+        </div>
+
+        <form action="/board" method="get">
+            <div>
+                <div>
+                    <label>분류</label>
+                    <select name="limit" class="custom-select">
+                    <option value="5" <%= limit==5? 'selected' : '' %>>5 개씩</option>
+                    <option value="10" <%= limit==10? 'selected' : '' %>>10 개씩</option>
+                    <option value="20" <%= limit==20? 'selected' : '' %>>20 개씩</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        
+
+</body>
+</html>

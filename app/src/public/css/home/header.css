@@ -1,0 +1,305 @@
+/* Setting */
+:root {
+	--black: #000;
+	--coral: #e9967a;
+	--box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.header .header-1 {
+  background: #fff;
+  padding: 10px 9%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .header-1 .logo {
+  font-size: 20px;
+  font-weight: bolder;
+  text-decoration: none;
+  color: #000;
+}
+
+.header .header-1 .logo i {
+  color: coral;
+}
+
+.header .header-1 .search-form {
+  width: 50%;
+  height: 50px;
+  border: #000;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.header .header-1 .search-form input {
+  font-size: 15px;
+  padding: 0 1.2rem;
+  height: 100%;
+  width: 100%;
+  text-transform: none;
+  color: #000;
+}
+
+.header .header-1 .search-form label {
+  font-size: 20px;
+  padding-left: 10px;
+  color: #000;
+  cursor: pointer;
+}
+
+.header .header-1 .search-form label:hover {
+  color: coral;
+}
+
+.header .header-1 .icons .fa-search,
+.header .header-1 .icons .fa-heart,
+.header .header-1 .icons .fa-shopping-cart,
+.header .header-1 .icons .fa-user-edit,
+.header .header-1 .icons .fa-chalkboard-teacher,
+.header .header-1 .icons .fa-book,
+.header .header-1 .icons .fa-sign-out-alt,
+.header .header-1 .icons .fa-user {
+  font-size: 20px;
+  margin-left: 10px;
+  color: #000;
+  cursor: pointer;
+}
+
+.header .header-1 .icons .fa-search:hover,
+.header .header-1 .icons .fa-heart:hover,
+.header .header-1 .icons .fa-shopping-cart:hover,
+.header .header-1 .icons .fa-user:hover {
+  color: coral;
+}
+
+.header .header-1 .icons p {
+   display: inline-flex;
+}
+
+.user-info {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.user-info img {
+	width: 20px;
+}
+
+.action {
+   position: absolute;
+   top: 20px;
+   right: 150px;
+}
+
+.action .profile {
+   position: relative;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   overflow: hidden;
+   cursor: pointer;
+}
+
+.action .profile img {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+.action .menu {
+   position: absolute;
+   top: 120px;
+   right: -10px;
+   padding: 10px 20px;
+   background: #fff;
+   width: 200px;
+   box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+   border-radius: 15px;
+   transition: 0.5s;
+   visibility: hidden;
+   z-index: 2;
+   opacity: 0;
+}
+
+.action .menu.active {
+   top: 80px;
+   visibility: visible;
+   opacity: 1;
+   z-index: 2;
+}
+
+.action .menu::before {
+   content: "";
+   position: absolute;
+   top: -5px;
+   right: 28px;
+   width: 20px;
+   height: 20px;
+   background: #fff;
+   transform: rotate(45deg);
+}
+
+.action .menu h3 {
+   width: 100%;
+   text-align: center;
+   font-weight: 500;
+   font-size: 18px;
+   color: #555;
+}
+
+.action .menu h3 span {
+   font-size: 14px;
+   color: #cecece;
+   font-weight: 400;
+}
+
+.action .menu ul li {
+   list-style: none;
+   padding: 10px 20px;
+   display: flex;
+   align-items: center;
+}
+
+.action .menu ul li i {
+   max-width: 20px;
+   margin-right: 10px;
+   opacity: 0.5;
+   transition: 0.5s;
+}
+
+.action .menu ul li:hover i {
+   opacity: 1;
+}
+
+.action .menu ul li a {
+   display: inline-block;
+   text-decoration: none;
+   color: #555;
+   font-weight: 500;
+   transition: 0.5s;
+   padding-left: 20px;
+    font-size: 15px;
+}
+
+.action .menu ul li:hover a {
+  color: #e9967a;
+}
+
+#search-btn {
+  display: none;
+}
+
+.header .header-2 {
+  background: #000;
+}
+
+.header .header-2 .headerBar {
+  text-align: center;
+}
+
+.header .header-2 .headerBar a {
+	color: #fff;
+	display: inline-block;
+	padding: 1.2rem;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+.header .header-2 .headerBar a:hover {
+  background: #454545;
+}
+
+.header .header-2.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* BOTTOM NAVBAR */
+.bottom-navbar {
+	text-align: center;
+	background: var(--black);
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	display: none;
+}
+
+.bottom-navbar .fas {
+	font-size: 2.5rem;
+	padding: 2rem;
+	color: #fff;
+}
+
+.bottom-navbar .fas:hover {
+	background: #ddd;
+}
+
+/* MEDIA */
+@media (max-width: 991px) {
+	html {
+		font-size: 55%;
+	}
+
+	.header .header-1 {
+		padding: 2rem;
+	}
+}
+
+@media (max-width: 768px) {
+	html {
+		scroll-padding-top: 0;
+	}
+
+	body {
+		padding-bottom: 6rem;
+	}
+
+	.header .header-2 {
+		display: none;
+	}
+
+	.bottom-navbar {
+		display: block;
+	}
+
+	#search-btn {
+		display: inline-block;
+	}
+
+	.header .header-1 {
+		box-shadow: var(--box-shadow);
+		position: relative;
+	}
+
+	.header .header-1 .search-form {
+		position: absolute;
+		top: -115%;
+		right: 2rem;
+		width: 90%;
+		box-shadow: var(--box-shadow);
+	}
+
+	.header .header-1 .search-form.active {
+		top: 115%;
+	}
+}
+
+@media (max-width: 450px) {
+	html {
+		font-size: 50%;
+	}
+}

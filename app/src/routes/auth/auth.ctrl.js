@@ -29,28 +29,19 @@ passport.deserializeUser(function (user, cb) {
 });
 
 const process = {
-    // login: function () {
-    //     passport.authenticate('local', {
-    //         successReturnToOrRedirect: '/',
-    //         failureRedirect: '/login',
-    //         failureMessage: true
-    //     })
-    // },
+    login:
+        passport.authenticate('local', {
+            successReturnToOrRedirect: '/home',
+            failureRedirect: '/login',
+            failureMessage: true
+        }),
     logout: (req, res, next) => {
-        const url = {
-            method: "POST",
-            path: "/logout"
-        };
         req.logout(function (err) {
             if (err) { return next(err); }
             res.redirect('/');
         });
     },
     register: async (req, res, next) => {
-        const url = {
-            method: "POST",
-            path: "/register"
-        };
         var salt = crypto.randomBytes(16);
         crypto.pbkdf2(req.body.password, salt, 310000, 32, 'sha256', function (err, hashedPassword) {
             if (err) { return next(err); }
@@ -70,6 +61,53 @@ const process = {
                 });
             });
         });
+    },
+    boardWrite: (req, res) => {
+        db.run('INSERT INTO board (owner_id, title, content) VALUES (?, ?, ?)', [
+            req.user.username,
+            req.body.title,
+            req.body.content,
+        ], function (err) {
+            if (err) { return console.log(err) }
+            return res.redirect('/board?page=1&limit=10');
+        });
+    },
+    boardRecommendation: (req, res) => {
+        db.run('UPDATE board SET recommendation = recommendation + 1 WHERE id = ?', [req.params.id], (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            if (result) {
+            }
+            return res.redirect('/board/' + req.params.id);
+        })
+    },
+    boardComment: (req, res) => {
+        if (req.user) {
+            db.run('INSERT INTO comments (board_id, sorts, depth, editor, comment) VALUES (?, ?, ?, ?, ?)', [
+                req.params.id,
+                0,
+                0,
+                req.user.username,
+                req.body.text,
+            ], (err, rows) => {
+                if (err) {
+                    console.log(err);
+                }
+                if (rows) {
+                }
+                db.run('UPDATE board SET comments = comments + 1 WHERE id = ?', [req.params.id], (err, row) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    if (row) {
+                    }
+                })
+                return res.redirect('/board/' + req.params.id);
+            })
+        } else {
+            res.send("<script>alert('로그인 후 이용가능합니다.'); location.href=history.back(); </script>");
+        }
     }
 };
 

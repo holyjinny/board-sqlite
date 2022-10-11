@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시물 자세히 보기</title>
+    <link rel="stylesheet" href="/css/board/boardDetail.css">
+    <link rel="stylesheet" href="/css/board/board.css">
+
+    <!-- Fontawesome을 사용하기 위한 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+
+    <%- include('../home/header.ejs') %>
+</head>
+<body>
+
+    <h1><%= board.title %></h1><hr>
+    <div class="info-head">
+    <div class="info-left">
+        <p class="fas fa-user"><span><%= board.owner_id %></span></p>
+        <p class="fas fa-comment"><span><%= board.comments %></span></p>
+        <p class="fas fa-eye"><span><%= board.hits %></span></p>
+        <p class="fas fa-thumbs-up"><span><%= board.recommendation %></span></p>
+    </div>
+    <div class="info-right">
+        <p><%= board.date %></p>
+    </div>
+</div>
+    <hr>
+
+    <!-- 내용 -->
+    <div class="content">
+        <p><%= board.content %></p>
+    </div>
+
+    <!-- 추천 버튼 -->
+    <div class="thumb">
+        <p><%= board.recommendation %></p>
+        <form action="/board/recommendation/<%= board.id %>" method="post">
+            <button type="submit" class="fas fa-thumbs-up" ></button>
+        </form>
+    </div>
+
+    <!-- 작성자 전용 버튼 -->
+    <div class="owner-btn">
+        <% if (user && board.owner_id === user.username) { %>
+            <button>수정</button>
+            <button>삭제</button>
+        <% } %>
+    </div>
+
+    <!-- 댓글 목록 -->
+    <div class="viewcomment">
+        <div class="view-comment">
+            <i class="fas fa-comment"></i>
+            <span class="comment-count"><%= board.comments %></span>  Comments
+        </div>
+        
+        <% if (comment) { %>
+        <% for (var comment of comment) { %>
+        <section class="comment-media">
+            <div class="media">
+                <div class="photo pull-left">
+                    <img src="../img/basic-user.png" alt="유저 이미지">
+                </div>
+
+                <div class="media-body">
+                    <div class="media-heading">
+                        <!-- 본인 댓글이라면 하이라이트 표시 -->
+                        <% if ( user && user.username === comment.editor ) { %>
+                            <b id="editor" style="color: red;"><%= comment.editor %></b>
+                        <% } else { %>
+                            <b id="editor"><%= comment.editor %></b>
+                        <% } %>
+                        <span class="text-muted">
+                            <span class="media-info">
+                                <i class="fas fa-clock"></i>
+                                <span class="comment-count"><%= comment.date %></span>
+                                &nbsp;
+                            </span>
+                                <div class="pull-right">
+                                    <a href="#">
+                                        <span>신고</span>
+                                    </a>
+                                </div>
+                        </span>
+                    </div>
+
+                    <div class="media-content">
+                        <%= comment.comment %>
+                        <div class="comment-thumb">
+                            <a href="#" class="fas fa-thumbs-up">
+                                <span class="comment-count">0</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <% } %>
+        <% } %>
+    </div>
+
+    <!-- 댓글 작성 -->
+    <div class="write">
+        <form action="/board/comment/<%= board.id %>" method="post">
+            <!-- <input name="text" type="text" placeholder="댓글을 입력해주세요."> -->
+            <textarea name="text" cols="50" rows="3" placeholder="댓글 작성" required></textarea>
+            <button type="submit">등록</button>
+        </form>
+    </div>
+
+    <div class="table">
+        <div class="table_section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>포토</th>
+                        <th>제목</th>
+                        <th>이름</th>
+                        <th>날짜</th>
+                        <th>조회</th>
+                        <th>댓글</th>
+                        <th>추천</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% for (var i = 0; i < list.length; i++) { %>
+                        <tr>
+                            <td><%= list[i].id %></td>
+                            <td>사진 넣기</td>
+                            <td>
+                                <a href="/board/<%= list[i].id %>">
+                                    <%= list[i].title %>
+                                </a>
+                            </td>
+                            <td><%= list[i].owner_id %></td>
+                            <td><%= list[i].date %></td>
+                            <td><%= list[i].hits %></td>
+                            <td><%= list[i].comments %></td>
+                            <td><%= list[i].recommendation %></td>
+                        </tr>
+                    <% } %>
+                </tbody>                        
+            </table>
+        </div>
+    </div>        
+</body>
+</html>
+

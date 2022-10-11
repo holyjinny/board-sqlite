@@ -1,27 +1,76 @@
-<% if (user) { %>
-    <section class="todoapp">
-        <nav class="nav">
-            <ul>
-                <li class="user"><%= user.username %></li>
-                <li>
-                    <form action="/logout" method="post">
-                        <button class="logout" type="submit">로그아웃</button>
-                    </form>
-                </li>
-            </ul>
+<!-- 직접 작성한 CSS -->
+<link rel="stylesheet" href="/css/home/header.css">
+
+<!-- Fontawesome을 사용하기 위한 CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+
+<!-- JS -->
+<script src="/js/home/header.js" defer></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+<!-- 헤더 -->
+<header class="header">
+    <div class="header-1">
+        <a href="/home" class="logo">
+            Jinny
+        </a>
+
+        <form class="search-form">
+            <input type="search" placeholder="검색어를 입력해주세요" id="search-box">
+            <label for="search-box" class="fas fa-search"></label>
+        </form>
+
+        <div class="icons">
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <% if (!user) { %>
+                <div class="fas fa-user" id="login-btn"></div>
+            <% } else { %>                
+                <div class="fas fa-user" id="menuToggle"></div>
+                <div class="action">
+                    <div class="menu">
+                        <div class="user-info">
+                            <div class="user-img">
+
+                                <img src="/img/basic-user.png" alt="유저 이미지">
+                            </div>
+                            <div class="user-msg">
+                                <h3>
+                                    <%= user.username %><br>
+                                    <span>회원 등급</span>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <ul>
+                            <li>
+                                <a href="#">프로필</a>
+                            </li>
+                            <li>
+                                <form action="/logout" method="post">
+                                    <button class="logout" type="submit">로그아웃</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <!-- Nav -->
+    <div class="header-2">
+        <nav class="headerBar">
+            <a href="/">INTRO</a>
+            <a href="/home">HOME</a>
+            <a href="/products">PRODUCTS</a>
+            <a href="/board?page=1&limit=10">BOARD</a>
         </nav>
-    </section> 
-<%} else {%>
-    <section class="todoapp">
-        <nav class="nav">
-            <ul>
-                <li class="user">로그인 필요</li>
-                <li>
-                    <form action="/login" method="post">
-                        <button class="login" type="submit">로그인</button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
-    </section> 
-<%}%>
+    </div>
+</header>
+
+<!-- 화면이 줄어들었을 때 아래 생기는 메뉴 -->
+<nav class="bottom-navbar">
+    <a href="/home" class="fas fa-home"></a>
+    <a href="/products" class="fas fa-shop"></a>
+    <a href="/board?page=1&limit=10" class="fas fa-chalkboard"></a>
+</nav>

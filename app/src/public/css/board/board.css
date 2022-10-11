@@ -1,0 +1,153 @@
+.table {
+    width: 100%;
+}
+
+.add {
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #0298cf;
+}
+
+button {
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+td button:nth-child(1) {
+    background-color: #0298cf;
+}
+
+td button:nth-child(2) {
+    background-color: #f80000;
+}
+
+.table_section {
+    /* height: 650px; */
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    min-width: 1000px;
+    border-collapse: collapse;
+}
+
+thead th {
+    padding: 10px;
+    background-color: #f6f9fc;
+    color: #8493a5;
+    font-size: 15px;
+}
+
+thead th:nth-child(1) {
+    width: 5%;
+}
+
+thead th:nth-child(2) {
+    width: 10%;
+}
+
+thead th:nth-child(3) {
+    width: 30%;
+}
+
+thead th:nth-child(4) {
+    width: 10%;
+}
+
+thead th:nth-child(5) {
+    width: 20%;
+}
+
+thead th:nth-child(6) {
+    width: 5%;
+}
+
+thead th:nth-child(7) {
+    width: 5%;
+}
+
+th,
+td {
+    border-bottom: 1px solid #dddddd;
+    word-break: break-all;
+    text-align: center;
+}
+
+td img {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 5px solid #ced0d2;
+}
+
+tr:hover td {
+    color: #0298cf;
+    cursor: pointer;
+    background-color: #f6f9fc;
+}
+
+/* PAGINATION */
+.pagination-container {
+    position: relative;
+    background: #fff;
+    display: flex;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-container li {
+    list-style: none;
+    line-height: 50px;
+    margin: 0 5px;
+}
+
+.pagination-container li .pageNumber {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.pagination-container li a {
+    display: block;
+    text-decoration: none;
+    color: #777;
+    font-weight: 600;
+    border-radius: 50%;
+}
+
+.pagination-container li .prev.disabled {
+    display: none;
+}
+
+.pagination-container li .pageNumber.active {
+    cursor: default;
+    pointer-events: none;
+}
+
+.pagination-container li .pageNumber.active,
+.pagination-container li .pageNumber:hover {
+    background: #333;
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+}
+
+/* ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+} */
+
+/* ::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+} */

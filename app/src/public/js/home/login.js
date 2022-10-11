@@ -1,36 +1,28 @@
 "use strict";
 
-const id = document.querySelector("#id"),
-    password = document.querySelector("#password"),
-    loginBtn = document.querySelector(".login-btn");
+const loginBtn = document.getElementById('login'),
+    signupBtn = document.getElementById('signup');
 
-loginBtn.addEventListener("click", login);
-
-function login() {
-    if (!id.value) return alert("아이디를 입력해주세요.");
-    if (!password.value) return alert("비밀번호를 입력해주세요.");
-
-    const req = {
-        id: id.value,
-        password: password.value,
-    };
-
-    fetch("/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(req),
+loginBtn.addEventListener('click', (e) => {
+    var parent = e.target.parentNode.parentNode;
+    Array.from(e.target.parentNode.parentNode.classList).find((element) => {
+        if (element !== 'slide-up') {
+            parent.classList.add('slide-up');
+        } else {
+            signupBtn.parentNode.classList.add('slide-up');
+            parent.classList.remove('slide-up');
+        }
     })
-        .then((res) => res.json())
-        .then((res) => {
-            if (res.success) {
-                location.href = "/";
-            } else {
-                if (res.err) return alert(res.err);
-            }
-        })
-        .catch((err) => {
-            console.error(new Error("로그인 중 에러 발생"));
-        })
-}
+});
+
+signupBtn.addEventListener('click', (e) => {
+    var parent = e.target.parentNode;
+    Array.from(e.target.parentNode.classList).find((element) => {
+        if (element !== 'slide-up') {
+            parent.classList.add('slide-up');
+        } else {
+            loginBtn.parentNode.parentNode.classList.add('slide-up');
+            parent.classList.remove('slide-up');
+        }
+    })
+});

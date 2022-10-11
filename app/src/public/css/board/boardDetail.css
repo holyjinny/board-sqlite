@@ -1,0 +1,121 @@
+.info-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-left {
+    display: flex;
+}
+
+.info-left p {
+    padding: 0 10px;
+}
+
+.info-left span {
+    padding: 10px;
+    font-size: 12px;
+}
+
+.thumb {
+    text-align: center;
+}
+
+.thumb button {
+    font-size: 20px;
+    border: none;
+    background: transparent;
+}
+
+.thumb button:hover {
+    color: #078dbd;
+    cursor: pointer;
+}
+
+.owner-btn {
+    text-align: right;
+}
+
+.write {
+    text-align: center;
+}
+
+/* 댓글 */
+.view-comment {
+    margin: 0;
+    padding: 0 0 5px;
+    text-transform: capitalize;
+    overflow: hidden;
+    border-bottom: 1px solid rgb(51, 51, 51);
+    display: inline-block;
+    position: relative;
+}
+
+.comment-count {
+    color: orangered;
+}
+
+.comment-media {
+    margin: 10px 0px;
+}
+
+.comment-media .media {
+    margin: 7px 0px;
+    padding: 7px 0 0;
+    display: inline-flex;
+}
+
+.comment-media :first-child.media {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.media > .pull-left {
+    margin-right: 10px;
+}
+
+.comment-media .photo img {
+    border-radius: 50%;
+    width: 64px !important;
+    height: 64px !important;
+    display: inline-block;
+}
+
+.comment-media .media .media-body {
+    padding-left: 0;
+}
+
+.media-heading {
+    margin: 0 0 5px;
+}
+
+.media-heading b {
+    font-weight: 700;
+}
+
+.text-muted {
+    color: #777;
+    font-size: 11px;
+    display: inline-flex;
+}
+
+.comment-media .media .media-info {
+    margin-left: 10px;
+}
+
+.comment-media .media .media-content {
+    margin-top: 8px;
+}
+
+.comment-media .comment-thumb {
+    text-align: right;
+    padding-right: 1px;
+}
+
+.comment-media .comment-thumb a {
+    text-decoration: none;
+}
+
+.pull-right a {
+    text-decoration: none;
+}

@@ -8,10 +8,47 @@
     <link rel="stylesheet" href="/css/home/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
     <script src="/js/home/login.js" defer></script>
-    <title>로그인</title>
+    <title>환영합니다!</title>
 </head>
 <body>
-  <div class="box">
+
+  <!-- 회원가입 폼 -->
+  <div class="form-structor">
+    <div class="signup slide-up">
+      <h2 class="form-title" id="signup">
+        <span>or</span> 회원가입
+      </h2>
+
+      <form action="/register" method="post">
+      <div class="form-holder">
+        <input type="text" class="input" name="username" placeholder="아이디를 입력해주세요." required>
+        <input type="password" class="input" name="password" placeholder="비밀번호를 입력해주세요." required>
+      </div>
+
+      <button class="submit-btn">회원가입</button>
+    </form>
+    </div>
+
+    <!-- 로그인 폼 -->
+    <div class="login">
+      <div class="center">
+        <h2 class="form-title" id="login">
+          <span>or</span> 로그인
+        </h2>
+
+        <form action="/login" method="post">
+        <div class="form-holder">
+          <input type="text" class="input" name="username" placeholder="아이디를 입력해주세요." required>
+          <input type="password" class="input" name="password" placeholder="비밀번호를 입력해주세요." required>
+        </div>
+
+        <button type="submit" class="submit-btn">로그인</button>
+      </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="box">
     <div class="form">
       <h2>포트폴리오</h2>
       <form action="/login" method="post">
@@ -35,31 +72,6 @@
       <input type="submit" value="로그인">
       </form>
     </div>
-  </div>
-      <!-- <div class="container">
-        <div class="box box-one">
-          <i class="fa-brands fa-yarn"></i>
-          <button class="google-btn">
-            <i class="fa-brands fa-google"></i>
-            <span>구글로 로그인하기</span>
-          </button>
-        </div>
-
-        <div class="box box-two">
-          <form>
-            <div>
-              <i class="fa-solid fa-user"></i>
-              <input type="text" id="id" placeholder="아이디"/>
-            </div>
-            <div>
-              <i class="fa-solid fa-lock"></i>
-              <input type="password" id="password" placeholder="비밀번호"/>
-            </div>
-          </form>
-          <button class="login-btn">로그인</button>
-          <button class="find-btn">비밀번호 찾기</button>
-          <p class="message">회원이 아니십니까? <a href="/register">회원가입</a></p>
-        </div>
-      </div> -->
+  </div> -->
 </body>
 </html>
