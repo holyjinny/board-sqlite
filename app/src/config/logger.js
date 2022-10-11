@@ -10,7 +10,7 @@ const printFormat = printf(({ timestamp, label, level, message }) => {
 const printLogFormat = {
     file: combine(
         label({
-            label: "노드 프로젝트",
+            label: "노드로 게시판 만들기",
         }),
         timestamp({
             format: "YYYY-MM-DD HH:mm:dd",
@@ -43,10 +43,5 @@ const logger = createLogger({
 if (process.env.NODE_ENV !== "production") {
     logger.add(opts.console);
 };
-
-// morgan이랑 같이 써볼 때
-// logger.stream = {
-//     write: (message) => logger.info(message),
-// };
 
 module.exports = logger;

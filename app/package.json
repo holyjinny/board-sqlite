@@ -1,10 +1,10 @@
 {
-  "name": "login-project",
+  "name": "board-sqlite",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "bin": {
-    "login-project": "bin/www.js"
+    "board-sqlite": "bin/www.js"
   },
   "dependencies": {
     "app-root-path": "^3.1.0",
