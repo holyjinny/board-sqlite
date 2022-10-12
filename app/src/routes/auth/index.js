@@ -13,7 +13,9 @@ router.post("/register", ctrl.process.register);
 // 게시판 관련 API
 router.post("/board/write", ctrl.process.boardWrite);
 router.post("/board/recommendation/:id", ctrl.process.boardRecommendation);
+router.post("/board/edit/:id", ctrl.process.boardEdit);
 router.post("/board/comment/:id", ctrl.process.boardComment);
+router.post("/board/comment/edit/:board_id/:id", ctrl.process.commentEdit);
 
 // router를 외부 파일에서 사용할 수 있게
 module.exports = router;

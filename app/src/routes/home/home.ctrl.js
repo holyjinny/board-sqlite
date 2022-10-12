@@ -112,9 +112,74 @@ const output = {
             });
         })
     },
+    boardEdit: (req, res) => {
+        logger.info(`GET /boardEdit 304 "게시글 수정 화면으로 이동"`);
+
+        db.get('SELECT * FROM board WHERE id=?', [req.params.id], (err, row) => {
+            if (err) {
+                console.log(err);
+            }
+            if (row) {
+                console.log(row);
+            }
+            return res.render("board/boardEdit", { board: row, user: req.user });
+        })
+    },
+    boardDelete: (req, res) => {
+        db.run('DELETE FROM board WHERE id = ?', [req.params.id], (err, row) => {
+            if (err) {
+                console.log(err);
+            }
+            if (row) {
+            }
+            db.run('DELETE FROM comments WHERE board_id = ?', [req.params.id]);
+            return res.redirect('/board?page=1&limit=10');
+        })
+    },
+    commentEdit: (req, res) => {
+        logger.info(`GET /products 304 "댓글 수정 화면으로 이동"`);
+        db.get('SELECT * FROM comments WHERE id = ?', [req.params.id], (err, row) => {
+            if (err) {
+                console.log(err);
+            }
+            if (row) {
+                console.log(row);
+            }
+            return res.render('board/commentEdit', { comment: row, user: req.user });
+        })
+    },
+    commentDelete: (req, res) => {
+        db.run('DELETE FROM comments WHERE id = ?', [req.params.id], (err, row) => {
+            if (err) {
+                console.log(err);
+            }
+            if (row) {
+            }
+            db.run('UPDATE board SET comments = comments - 1 WHERE id = ?', [req.params.board_id]);
+        });
+
+        return res.redirect('/board/' + req.params.board_id);
+    },
     products: (req, res) => {
         logger.info(`GET /products 304 "상품 화면으로 이동"`);
         res.render("products/products", { user: req.user });
+    },
+    profile: (req, res) => {
+        logger.info(`GET /profile 304 "프로필 화면으로 이동"`);
+        res.render("user/profile", { user: req.user });
+    },
+    profileEdit: (req, res) => {
+        logger.info(`GET /profileEdit 304 "프로필 수정 화면으로 이동"`);
+
+        db.get('SELECT * FROM users WHERE id=?', [req.user.id], (err, rows) => {
+            if (err) {
+                console.log(err);
+            }
+            if (rows) {
+                console.log(rows);
+            }
+        })
+        res.render("user/profileEdit", { user: req.user });
     }
 };
 

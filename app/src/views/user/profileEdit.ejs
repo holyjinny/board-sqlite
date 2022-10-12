@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필</title>
+
+    <!-- Fontawesome을 사용하기 위한 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/user/profile.css">
+
+</head>
+<body>
+    <div class="header_wrapper">
+        <header></header>
+        <div class="cols_container">
+            <div class="left_col">
+                <div class="img_container">
+                    <img src="/img/basic-user.png" alt="유저 이미지">
+                    <span></span>
+                </div>
+                
+                <h2><%= user.username %></h2>
+                <p>백엔드 개발자</p>
+                <p>이메일</p>
+
+                <ul class="about">
+                    <li><span>1,000</span>팔로워</li>
+                    <li><span>1,000</span>팔로잉</li>
+                    <li><span>1,000</span>추천수</li>
+                </ul>
+
+                <div class="content">
+                    <p>
+                        여기에는 간단한 소개글을 남길 수 있게 쓰기
+                        여기에는 간단한 소개글을 남길 수 있게 쓰기
+                        여기에는 간단한 소개글을 남길 수 있게 쓰기
+                    </p>
+
+                    <ul>
+                        <li>
+                            <i class="fas fa-twitter"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-facebook"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-instagram"></i>
+                        </li>
+                        <li>
+                            <a href="/home">
+                                <i class="fas fa-home"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="right_col">
+                <nav>
+                    <ul>
+                        <li id="link"><a href="/profile">사진첩</a></li>
+                        <li id="link"><a href="#">즐겨찾기</a></li>
+                        <li id="link"><a href="#">친구들</a></li>
+                        <li id="link" class="active"><a href="/profileEdit">정보 수정</a></li>
+                    </ul>
+
+                    <button>팔로우</button>
+                </nav>
+
+                <div class="info">
+                    <input type="text" placeholder=<%= user.username %> readonly>
+                    <input type="text" placeholder=<%= user.date %>>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

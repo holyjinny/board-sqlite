@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 수정하기</title>
+    <%- include('../home/header.ejs') %>
+</head>
+<body>
+
+    <h1>수정 페이지</h1>
+    <form action="/board/edit/<%= board.id %>" method="post">
+        <div>
+            <input type="text" name="title" placeholder="<%= board.title %>" required>
+        </div>
+        <div>
+            <textarea name="content" cols="30" rows="10" placeholder="<%= board.content %>" required></textarea>
+        </div>
+        <div>
+            <input type="file" placeholder="첨부 파일">
+        </div>
+        <div>
+            <button type="submit">수정하기</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -45,8 +45,16 @@
     <!-- 작성자 전용 버튼 -->
     <div class="owner-btn">
         <% if (user && board.owner_id === user.username) { %>
-            <button>수정</button>
-            <button>삭제</button>
+            <button>
+                <a href="/board/edit/<%= board.id %>">
+                    수정
+                </a>
+            </button>
+            <button>
+                <a href="/board/delete/<%= board.id %>">
+                    삭제
+                </a>
+            </button>
         <% } %>
     </div>
 
@@ -80,15 +88,27 @@
                                 &nbsp;
                             </span>
                                 <div class="pull-right">
+                                    <% if ( user && user.username === comment.editor ) { %>
+                                    <a href="/board/comment/edit/<%= board.id %>/<%= comment.id %>">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        <span>수정</span>
+                                    </a>
+                                    <a href="/board/comment/delete/<%= board.id %>/<%= comment.id %>">
+                                        <i class="fa-solid fa-trash"></i>
+                                        <span>삭제</span>
+                                    </a>
+                                    <% } else { %>
                                     <a href="#">
                                         <span>신고</span>
                                     </a>
+                                    <% } %>
                                 </div>
                         </span>
                     </div>
 
                     <div class="media-content">
                         <%= comment.comment %>
+
                         <div class="comment-thumb">
                             <a href="#" class="fas fa-thumbs-up">
                                 <span class="comment-count">0</span>

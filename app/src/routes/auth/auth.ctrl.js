@@ -108,6 +108,49 @@ const process = {
         } else {
             res.send("<script>alert('로그인 후 이용가능합니다.'); location.href=history.back(); </script>");
         }
+    },
+    boardEdit: (req, res) => {
+        // YYYY-MM-DD hh:mm:ss 형식에 맞추기 위해서
+        function timestamp() {
+            var today = new Date();
+            today.setHours(today.getHours() + 9);
+            return today.toISOString().replace('T', ' ').substring(0, 19);
+        }
+
+        db.run('UPDATE board SET (title, content, date) = (?, ?, ?) WHERE id = ?', [
+            req.body.title,
+            req.body.content,
+            timestamp(),
+            req.params.id
+        ], (err, row) => {
+            if (err) {
+                console.log(err);
+            }
+            if (row) {
+            }
+            return res.redirect('/board/' + req.params.id);
+        })
+    },
+    commentEdit: (req, res) => {
+        // YYYY-MM-DD hh:mm:ss 형식에 맞추기 위해서
+        function timestamp() {
+            var today = new Date();
+            today.setHours(today.getHours() + 9);
+            return today.toISOString().replace('T', ' ').substring(0, 19);
+        }
+
+        db.run('UPDATE comments SET (comment, date) = (?, ?) WHERE id = ?', [
+            req.body.comment,
+            timestamp(),
+            req.params.id
+        ], (err, row) => {
+            if (err) {
+                console.log(err);
+            }
+            if (row) {
+            }
+            return res.redirect('/board/' + req.params.board_id);
+        })
     }
 };
 
