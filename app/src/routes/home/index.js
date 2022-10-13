@@ -21,6 +21,7 @@ router.get("/board/comment/delete/:board_id/:id", ctrl.output.commentDelete);
 // 프로필
 router.get("/profile", ctrl.output.profile);
 router.get("/profileEdit", ctrl.output.profileEdit);
+router.get("/deleteAccount/:id", ctrl.output.deleteAccount);
 
 // 상품
 router.get("/products", ctrl.output.products);

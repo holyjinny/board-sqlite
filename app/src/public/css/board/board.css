@@ -1,11 +1,13 @@
 .table {
     width: 100%;
+    text-align: right;
 }
 
 .add {
     padding: 10px 20px;
     color: #ffffff;
     background-color: #0298cf;
+    margin-bottom: 20px;
 }
 
 button {

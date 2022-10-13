@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+}
+
+.wrapper {
+    width: 470px;
+    background: #ddd;
+    border-radius: 5px;
+    padding: 25px 25px 30px;
+}
+
+.wrapper h2 {
+    color: #4671ea;
+    font-size: 28px;
+    text-align: center;
+}
+
+.wrapper input {
+    width: 98%;
+    height: 20px;
+}
+
+.wrapper textarea {
+    width: 93%;
+    height: 59px;
+    padding: 15px;
+    border-radius: 5px;
+    outline: none;
+    resize: none;
+    font-size: 16px;
+    border-color: #bfbfbf;
+    margin-top: 20px;
+    max-height: 330px;
+}
+
+.wrapper .submit-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.wrapper .submit-btn button {
+    cursor: pointer;
+}
+
+textarea:is(:focus, :valid) {
+    border-color: #4671ea;
+    border-width: 2px;
+    padding: 14px;
+}
+
+textarea::-webkit-scrollbar {
+    width: 0px;
+}

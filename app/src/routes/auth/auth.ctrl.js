@@ -35,11 +35,17 @@ const process = {
             failureRedirect: '/login',
             failureMessage: true
         }),
-    logout: (req, res, next) => {
-        req.logout(function (err) {
-            if (err) { return next(err); }
-            res.redirect('/');
-        });
+    logout: async (req, res, next) => {
+        if (req.session.passport.user) {
+            await req.session.destroy((err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.redirect('/');
+
+                }
+            })
+        }
     },
     register: async (req, res, next) => {
         var salt = crypto.randomBytes(16);

@@ -180,6 +180,23 @@ const output = {
             }
         })
         res.render("user/profileEdit", { user: req.user });
+    },
+    deleteAccount: async (req, res) => {
+        console.log(req.session.passport.user.id);
+        if (req.session.passport.user) {
+            await req.session.destroy((err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    db.run('DELETE FROM users WHERE id = ?', [req.params.id], (err) => {
+                        if (err) {
+                            console.log(err);
+                        }
+                    })
+                    return res.redirect("/");
+                }
+            })
+        }
     }
 };
 
