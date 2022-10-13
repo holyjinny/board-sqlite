@@ -17,17 +17,6 @@ db.serialize(function () {
     date TEXT NOT NULL DEFAULT (DATETIME('now', 'localtime')) \
   )");
 
-  // 암호화 관련 작업 더 깊이 해보기
-  // db.run("CREATE TABLE IF NOT EXISTS users ( \
-  //   id INTEGER PRIMARY KEY, \
-  //   username TEXT UNIQUE, \
-  //   password TEXT NOT NULL, \
-  //   algorithm TEXT, \
-  //   key TEXT, \
-  //   iv TEXT, \
-  //   date TEXT NOT NULL DEFAULT (DATETIME('now', 'localtime')) \
-  // )");
-
   // 게시판 테이블
   db.run("CREATE TABLE IF NOT EXISTS board ( \
     id INTEGER PRIMARY KEY, \
@@ -58,30 +47,6 @@ db.serialize(function () {
     crypto.pbkdf2Sync('admin', salt, 310000, 32, 'sha256'),
     salt
   ]);
-
-  // 양방향 (대칭형 암호화)
-  // const algorithm = 'aes-256-cbc';
-  // const key = crypto.randomBytes(32);
-  // const iv = crypto.randomBytes(16);
-
-
-  // function encrypt(text) {
-  //   var cipher = crypto.createCipheriv(algorithm, Buffer.from(key), iv);
-  //   var encrypted = cipher.update(text);
-  //   encrypted = Buffer.concat([encrypted, cipher.final()]);
-  //   encryptedData = encrypted.toString('hex');
-  //   // return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
-  //   console.log(encryptedData);
-  // }
-
-  // db.run('INSERT OR IGNORE INTO users (username, password, algorithm, key, iv) VALUES (?, ?, ?, ?, ?)', [
-  //   'admin',
-  //   encrypt('admin'),
-  //   algorithm,
-  //   key,
-  //   iv
-  // ]);
-
 });
 
 module.exports = db;

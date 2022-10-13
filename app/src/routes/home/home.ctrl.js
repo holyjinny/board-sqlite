@@ -55,7 +55,6 @@ const output = {
                 }
 
                 results.results = rows.slice(startIndex, endIndex);
-                // res.json(results.results);
 
                 res.render("board/board", { board: results.results, user: req.user, page: page, limit: limit, maxPage: endIndex, pagination: viewList });
             });

@@ -5,24 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 수정하기</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/board/boardWrite.css">
+
     <%- include('../home/header.ejs') %>
 </head>
 <body>
 
-    <h1>수정 페이지</h1>
-    <form action="/board/edit/<%= board.id %>" method="post">
-        <div>
-            <input type="text" name="title" placeholder="<%= board.title %>" required>
+    <div class="container">
+        <div class="wrapper">
+            <h2>게시글을 수정해주세요.</h2>
+            <form action="/board/edit/<%= board.id %>" method="post">
+                <input type="text" name="title" placeholder="<%= board.title %>" required>
+                <textarea name="content" cols="30" rows="10" placeholder="<%= board.content %>" required></textarea>
+                <div class="submit-btn">
+                    <button type="submit">수정하기</button> 
+                </div>
+            </form>
         </div>
-        <div>
-            <textarea name="content" cols="30" rows="10" placeholder="<%= board.content %>" required></textarea>
-        </div>
-        <div>
-            <input type="file" placeholder="첨부 파일">
-        </div>
-        <div>
-            <button type="submit">수정하기</button>
-        </div>
-    </form>
+    </div>
 </body>
 </html>
