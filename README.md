@@ -5,4 +5,6 @@
 - ID : admin
 - PW : admin
 
-# CRUD
+# API 테스트
+
+- VSCode의 RapidAPI를 통해 GET or POST 통신
